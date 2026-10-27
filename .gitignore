@@ -1,0 +1,4 @@
+grid*/
+*.rds
+*.log
+.Rhistory

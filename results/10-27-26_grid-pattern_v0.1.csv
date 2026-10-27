@@ -1,0 +1,13 @@
+"setting","p_null","p_rr1.2","p_rr1.5","compatible_all","disc_pairs"
+"base",0.96,0.46,0.02,TRUE,8548
+"brown_size",0.08,0.08,0.22,TRUE,625
+"capture_0.70",0.94,0.38,0.02,TRUE,7461
+"capture_1.0",0.94,0.14,0,TRUE,9589
+"halfsib_0",0.94,0.34,0,TRUE,8543
+"halfsib_0.30",0.82,0.26,0.02,TRUE,8549
+"nonshared_0",0.9,0.48,0.02,TRUE,8554
+"nonshared_0.25",0.64,0.22,0.02,FALSE,8562
+"paternal_1.2",0.92,0.3,0.02,TRUE,8553
+"rho_0.3",0.76,0.32,0,FALSE,8811
+"rho_0.9",0.94,0.52,0.04,TRUE,8232
+"surveil_1.15",0.44,0.04,0,FALSE,8559
