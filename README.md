@@ -16,7 +16,7 @@ Author: Vera Wilde, Heilbronn Data Science Center, Technical University of Munic
   - v0.4: autism subtypes (with / without intellectual disability) with separate effects, dose heterogeneity, age at diagnosis with administrative censoring and Cox estimators, severity-dependent exposure misclassification, and causal truths computed from potential-outcome risks in the target-trial population
 - `R/*run-grid*` — scenario grids; `R/*summarize-grid*` — summaries and figure.
 - `docs/` — simulation protocol (ADEMP structure) and the adjustment-set audit.
-- `results/` — pilot summaries (50 replicates per scenario; Monte Carlo SEs are reported with every performance measure).
+- `results/` — pilot summaries (50 replicates per scenario; Monte Carlo SEs are reported with every performance measure). `10-27-26_grid-results_v0.4.csv` holds the v0.4 pilot.
 
 ## Running
 
