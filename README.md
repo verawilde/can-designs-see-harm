@@ -31,7 +31,7 @@ Requires R (≥ 4.2) with the `survival` package. The final run uses all cores b
 
 ## Status
 
-Pilot results only. The final run (1,000 replicates per scenario) will follow a preregistration on OSF; the link will be added here.
+Pilot results only. The final run (1,000 replicates per scenario) is preregistered on OSF: https://osf.io/9wfq8/
 
 ## License
 
