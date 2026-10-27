@@ -8,7 +8,7 @@ source(file.path(here, "10-27-26_ad-pregnancy-sim_v0.4.R"))
 suppressPackageStartupMessages(library(parallel))
 n_rep <- as.integer(Sys.getenv("N_REP", "1000"))
 cores <- max(1, detectCores() - 1)
-out_dir <- file.path(here, "final"); dir.create(out_dir, showWarnings = FALSE)
+out_dir <- file.path(here, Sys.getenv("OUT_DIR", "final")); dir.create(out_dir, showWarnings = FALSE)
 reg <- list(fu_min = 3, fu_max = 15)
 one_factor <- list(
   base = list(), rho_0.9 = list(rho_severity = 0.9), rho_0.3 = list(rho_severity = 0.3),
@@ -33,6 +33,8 @@ grid$dose              <- list(rr_drug = 1.05, rr_high_extra = 1.7)
 grid$combined__null    <- c(reg, list(rr_drug = 1.0, misc_sev = 0.5))
 grid$combined__subtype <- c(reg, list(rr_noid = 1.3, rr_id = 1.0, misc_sev = 0.5))
 stopifnot(length(grid) == 74)
+only <- Sys.getenv("ONLY", "")   # optional regex to run a subset, e.g. ONLY=^base for a timing test
+if (nzchar(only)) grid <- grid[grepl(only, names(grid))]
 run_one <- function(key) {
   f <- file.path(out_dir, paste0(key, ".rds")); if (file.exists(f)) return(key)
   sc <- do.call(make_scenario, grid[[key]])
@@ -41,6 +43,7 @@ run_one <- function(key) {
   cat(format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "done", key, "\n", file = file.path(out_dir, "progress.log"), append = TRUE)
   key
 }
-cat("Running", length(grid), "scenarios x", n_rep, "replicates on", cores, "cores\n")
+cat("Running", length(grid), "scenarios x", n_rep, "replicates on", cores, "cores\n"); t0 <- Sys.time()
 invisible(mclapply(names(grid), run_one, mc.cores = cores, mc.preschedule = FALSE))
 cat("FINAL RUN COMPLETE\n", file = file.path(out_dir, "progress.log"), append = TRUE)
+cat("Done in", format(round(difftime(Sys.time(), t0, units = "mins"), 1)), "\n")
