@@ -16,7 +16,10 @@ Author: Vera Wilde, Heilbronn Data Science Center, Technical University of Munic
   - v0.4: autism subtypes (with / without intellectual disability) with separate effects, dose heterogeneity, age at diagnosis with administrative censoring and Cox estimators, severity-dependent exposure misclassification, and causal truths computed from potential-outcome risks in the target-trial population
 - `R/*run-grid*` — scenario grids; `R/*summarize-grid*` — summaries and figure.
 - `docs/` — simulation protocol (ADEMP structure) and the adjustment-set audit.
-- `results/` — pilot summaries (50 replicates per scenario; Monte Carlo SEs are reported with every performance measure). `10-27-26_grid-results_v0.4.csv` holds the v0.4 pilot.
+- `results/` — pilot summaries (50 replicates per scenario) and the final results.
+  - `11-12-26_final-results_v1.0.csv`: preregistered final run, 74 scenarios with 1,000 replicates each (one row per scenario and method).
+  - `final-replicates/`: the stored replicate-level estimates from the final run, one file per scenario.
+- `R/explore/` and `results/explore/` — exploratory analyses added after the final run, outside the preregistration (see below).
 
 ## Running
 
@@ -31,7 +34,20 @@ Requires R (≥ 4.2) with the `survival` package. The final run uses all cores b
 
 ## Status
 
-Pilot results only. The final run (1,000 replicates per scenario) is preregistered on OSF: https://osf.io/9wfq8/
+The final run (74 scenarios, 1,000 replicates each) was preregistered on OSF before it began: https://osf.io/9wfq8/. The code used for it is frozen at commit de8ae14.
+
+## Exploratory analyses (not preregistered)
+
+These were added after the final run and are reported as exploratory.
+
+- `R/explore/11-13-26_posthoc-pooled-sibling-check.R`: how often a single simulated sibling comparison returns an estimate as low as the pooled sibling estimate in Chan et al. (2026), 0.98, or an interval ending at or below 1.12. Output: `results/11-13-26_posthoc-pooled-sibling-check.csv`.
+- `R/explore/11-13-26_simulated-meta-analysis.R`: random-effects meta-analyses of seven simulated sibling studies built from the stored replicates. Output: `results/explore/11-13-26_simulated-meta-analysis_results.csv`.
+- `R/explore/11-12-26_ad-pregnancy-sim_v0.4-explore.R`: a copy of the v0.4 model with one added parameter (`assort`), through which fathers' depression can share the mother's family component of severity. The frozen v0.4 file is unchanged.
+- `R/explore/11-12-26_run-explore-nc.R`: twelve uncalibrated negative-control scenarios, 150 replicates each.
+- `R/explore/11-12-26_run-explore-dose.R`: the dose scenario under stronger pregnancy-specific confounding or a lower between-pregnancy correlation of severity, plus a no-effect scenario, 300 replicates each.
+- `R/explore/11-14-26_summarize-explore.R`: summaries of the two sets of runs above, in `results/explore/`.
+
+The two run scripts are run from `R/explore/`; the others from the repository root.
 
 ## License
 
