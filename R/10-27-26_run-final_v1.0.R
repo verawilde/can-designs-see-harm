@@ -1,4 +1,4 @@
-# Final run: all 75 preregistered scenarios, 1,000 replicates each (N_REP to override).
+# Final run: all 74 preregistered scenarios, 1,000 replicates each (N_REP to override).
 # Run from the folder that holds this file:  Rscript 10-27-26_run-final_v1.0.R
 # Uses all cores but one. Each scenario is saved as it finishes, so the run can be
 # stopped and restarted: finished scenarios are skipped.
