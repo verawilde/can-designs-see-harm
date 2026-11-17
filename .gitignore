@@ -2,3 +2,5 @@ grid*/
 *.rds
 *.log
 .Rhistory
+!results/final-replicates/*.rds
+!results/explore/*.rds
